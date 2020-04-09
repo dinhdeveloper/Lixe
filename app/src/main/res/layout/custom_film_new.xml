@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:layout_marginHorizontal="10dp"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgItemFilm"
+        android:background="@color/blackthree"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="150dp"
+        android:scaleType="center" />
+
+    <ImageView
+        android:src="@drawable/ic_play_circle_outline_white_48dp"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="center" />
+
+    <TextView
+        android:id="@+id/txtNameFilm"
+        android:layout_below="@+id/imgItemFilm"
+        android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:singleLine="true"
+        android:textColor="@color/whileColor"
+        android:textSize="13dp" />
+
+
+</RelativeLayout>
+
+
