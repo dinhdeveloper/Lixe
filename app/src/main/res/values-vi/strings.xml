@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lixe Music</string>
+    <string name="title_home">Trang Chủ</string>
+    <string name="title_category">Danh Mục</string>
+    <string name="title_film">Phim</string>
+    <string name="title_music">Nhạc</string>
+    <string name="title_profile">Trang Cá Nhân</string>
+    <string name="title_activity_login">Đăng Nhập</string>
+</resources>

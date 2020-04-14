@@ -17,6 +17,7 @@
 
     <TextView
         android:id="@+id/txtNameFilm"
+        android:fontFamily="@font/roboto_light"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
 
     <TextView
         android:id="@+id/txtAd"
+        android:fontFamily="@font/roboto_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

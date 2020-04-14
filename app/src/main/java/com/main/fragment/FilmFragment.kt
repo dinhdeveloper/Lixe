@@ -89,11 +89,17 @@ class FilmFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<List<Song>>, response: Response<List<Song>>) {
-                productList = response.body() as List<Song>
-                adapterFilm = ListActorAdapter(context, productList)
-                rc_actor?.adapter = adapterFilm
-                rc_actor?.setHasFixedSize(true)
-                adapterFilm.notifyDataSetChanged()
+                try {
+                    if (response.isSuccessful) {
+                        productList = response.body() as List<Song>
+                        adapterFilm = ListActorAdapter(context, productList)
+                        rc_actor?.adapter = adapterFilm
+                        rc_actor?.setHasFixedSize(true)
+                        adapterFilm.notifyDataSetChanged()
+                    }
+                } catch (e: Exception) {
+                    Log.e("ERROR", e.message)
+                }
             }
 
         })
@@ -110,11 +116,17 @@ class FilmFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<List<Song>>, response: Response<List<Song>>) {
-                productList = response.body() as List<Song>
-                adapterFilm = RecentlyViewedAdapter(context, productList)
-                rc_viewed?.adapter = adapterFilm
-                rc_viewed?.setHasFixedSize(true)
-                adapterFilm.notifyDataSetChanged()
+                try {
+                    if (response.isSuccessful) {
+                        productList = response.body() as List<Song>
+                        adapterFilm = RecentlyViewedAdapter(context, productList)
+                        rc_viewed?.adapter = adapterFilm
+                        rc_viewed?.setHasFixedSize(true)
+                        adapterFilm.notifyDataSetChanged()
+                    }
+                } catch (e: Exception) {
+                    Log.e("ERROR", e.message)
+                }
             }
 
         })
@@ -131,18 +143,24 @@ class FilmFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<List<Film>>, response: Response<List<Film>>) {
-                productList = response.body() as List<Film>
-                adapterFilm = ListFilmAdapter(context, productList) { product ->
-                    val intent = Intent(context, FilmDetailActivity::class.java)
-                    intent.putExtra("FILM", product)
-                    startActivity(intent)
-                }
-                rc_listFilm?.adapter = adapterFilm
-                rc_listFilm?.setHasFixedSize(true)
-                adapterFilm.notifyDataSetChanged()
+                try {
+                    if (response.isSuccessful) {
+                        productList = response.body() as List<Film>
+                        adapterFilm = ListFilmAdapter(context, productList) { product ->
+                            val intent = Intent(context, FilmDetailActivity::class.java)
+                            intent.putExtra("FILM", product)
+                            startActivity(intent)
+                        }
+                        rc_listFilm?.adapter = adapterFilm
+                        rc_listFilm?.setHasFixedSize(true)
+                        adapterFilm.notifyDataSetChanged()
 
-                shimmer_view_product?.stopShimmer()
-                shimmer_view_product?.visibility = View.GONE
+                        shimmer_view_product?.stopShimmer()
+                        shimmer_view_product?.visibility = View.GONE
+                    }
+                } catch (e: Exception) {
+                    Log.e("ERROR", e.message)
+                }
             }
 
         })

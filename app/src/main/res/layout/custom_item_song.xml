@@ -32,7 +32,8 @@
 
                 <TextView
                     android:id="@+id/txtSong"
-
+                    android:fontFamily="@font/roboto_light"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Het thuong can nho"
@@ -41,6 +42,7 @@
 
                 <TextView
                     android:id="@+id/txtSingerSong"
+                    android:fontFamily="@font/roboto_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Het thuong can nho"

@@ -52,11 +52,20 @@ class HomeFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<List<Film>>, response: Response<List<Film>>) {
-                productList = response.body() as List<Film>
-                adapterFilm = ListHomeAdapter(context, productList)
-                rc_home?.adapter = adapterFilm
-                rc_home?.setHasFixedSize(true)
-                adapterFilm.notifyDataSetChanged()
+                try {
+                    if (response.isSuccessful){
+                        productList = response.body() as List<Film>
+                        adapterFilm = ListHomeAdapter(context, productList)
+                        rc_home?.adapter = adapterFilm
+                        rc_home?.setHasFixedSize(true)
+                        adapterFilm.notifyDataSetChanged()
+                    }
+                    else{
+                        Log.e("HAHA","NO DATA")
+                    }
+                }catch (e:Exception){
+                    Log.e("ERROR",e.message)
+                }
             }
 
         })

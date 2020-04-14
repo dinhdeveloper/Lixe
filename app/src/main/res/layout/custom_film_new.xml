@@ -25,6 +25,8 @@
 
     <TextView
         android:id="@+id/txtNameFilm"
+        android:fontFamily="@font/roboto_light"
+        android:textStyle="bold"
         android:layout_below="@+id/imgItemFilm"
         android:layout_width="match_parent"
         android:layout_marginTop="25dp"
