@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:gravity="center"
+            android:fontFamily="@font/roboto_bold"
             android:text="Very Phone Number"
             android:textColor="@color/xanhduong"
             android:textSize="20dp"
@@ -45,7 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/custom_button_login"
             android:textColor="@color/whileColor">
 
@@ -56,7 +57,7 @@
                 android:gravity="center"
                 android:text="Send Code"
                 android:textColor="@color/whileColor"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
         </LinearLayout>
     </LinearLayout>

@@ -1,65 +1,68 @@
 package com.main.activity
 
-import android.graphics.Color
-import android.os.Build
+
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.size
-import com.bumptech.glide.Glide
-import com.google.android.material.tabs.TabLayout
-import com.main.model.Film
+import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.activity_film_detail.*
-import kotlinx.android.synthetic.main.activity_list_music.toolbar
 
-class FilmDetailActivity : AppCompatActivity() {
+
+const val YOUTUBE_VIDEO_ID = "-3P5S5R15wI" //DZDYZ9nRHfU
+
+class FilmDetailActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
+
+    companion object {
+        const val youtube_api_key: String = "AIzaSyD7FTYSJuVBwcV3tEYJsf1DyhOMlbdt8Qg"
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_film_detail)
-
-        customToolbar()
-        addCollapsing()
+        youtube_view.initialize(youtube_api_key, this)
 
         getData()
-
     }
 
     private fun getData() {
         var intent = intent
-        var product = intent.getSerializableExtra("FILM") as Film
+        //var product = intent.getSerializableExtra("FILM") as Film
 
-        Glide.with(applicationContext).load(product.images).into(avatar)
-        collapsing_film.title = product.name
-        collapsing_film.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
-        txtAd.text = product.actor
-    }
-
-
-    private fun customToolbar() {
-        //set toolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
-    }
-
-    private fun addCollapsing() {
-        collapsing_film.title = ""
-        collapsing_film.setExpandedTitleTextAppearance(R.style.ExpandedAppBar) //set text size khi chua scoll
-        // collapsing.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
-        collapsing_film.setCollapsedTitleTextColor(Color.WHITE) // scoll len mau trang.
-        collapsing_film.setExpandedTitleColor(Color.WHITE)  // khi chua scoll
-        collapsing_film.setExpandedTitleTextAppearance(R.style.TextAppearance_MyApp_Title_Expanded)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_film_detail, menu)
         return true
     }
+
+    override fun onInitializationSuccess(
+        provider: YouTubePlayer.Provider?,
+        youTubePlayer: YouTubePlayer?,
+        b: Boolean
+    ) {
+        if (!b) {
+            youTubePlayer?.loadVideo(YOUTUBE_VIDEO_ID)
+            youTubePlayer?.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT)
+            youTubePlayer?.play()
+            youTubePlayer?.seekToMillis(1)
+        }
+
+    }
+
+    override fun onInitializationFailure(
+        provider: YouTubePlayer.Provider?,
+        result: YouTubeInitializationResult?
+    ) {
+        if (result!!.isUserRecoverableError) {
+            result!!.getErrorDialog(this, 1).show()
+        } else {
+            val error =
+                String.format("Error initializing YouTube player", result.toString())
+            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+        }
+    }
+
 }

@@ -8,6 +8,10 @@
     <string name="title_profile">Profile</string>
     <string name="title_activity_login">LoginActivity</string>
 
+    <string name="player_error" translatable="false">Error initializing YouTube player: %s</string>
+    <string name="seek_to" translatable="false">Jump To</string>
+    <string name="seek_to_hint" translatable="false">Seconds</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="in_news" translatable="false">“Bài học lớn nhất trong công tác phòng, chống dịch thời gian qua là dưới sự lãnh đạo của Đảng, tất cả lực lượng vào cuộc. Đặc biệt là sự tham gia của người dân”, Phó thủ tướng nói.
